@@ -1,5 +1,5 @@
 import unittest
-from main import fizzbuzz  # Assure-toi que ton fichier main.py contient une fonction fizzbuzz
+from main import fizzbuzz
 
 class TestFizzBuzz(unittest.TestCase):
 
@@ -24,4 +24,4 @@ class TestFizzBuzz(unittest.TestCase):
         self.assertEqual(fizzbuzz(22), "22")
 
 if __name__ == "__main__":
-    unittest.main()  # Lance les tests
+    unittest.main()
