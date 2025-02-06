@@ -1,31 +1,31 @@
-name: Python Tests
-
+name: Run Test
+ 
 on:
   push:
     branches:
-      - main  # Exécute les tests lorsque tu pushes sur la branche principale
+      - main
   pull_request:
     branches:
-      - main  # Exécute les tests lorsque tu fais une pull request vers la branche principale
-  workflow_dispatch:  # Permet de lancer les tests à la demande depuis GitHub
-
+      - main
+  workflow_dispatch:  # Permet de lancer manuellement l’action depuis GitHub
+ 
 jobs:
   test:
-    runs-on: ubuntu-latest  # Utilise un environnement Ubuntu pour l'exécution des tests
-
+    runs-on: ubuntu-latest
+ 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2  # Récupère le code source de ton dépôt
-
+      - name: Checkout repository
+        uses: actions/checkout@v3
+ 
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
-          python-version: 3.13.1  
-
+          python-version: "3.13.1"  
+ 
       - name: Install dependencies
         run: |
-          python -m pip install --upgrade pip  # Mets à jour pip
-
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt || echo "No requirements.txt found"
+ 
       - name: Run tests
-        run: |
-          python -m unittest discover -s . -p "test.py"  # Lance les tests dans le fichier test.py (ou test_main.py si tu l'appelles ainsi)
+        run: python -m unittest discover
