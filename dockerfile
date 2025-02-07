@@ -1,15 +1,14 @@
-FROM python:3.9-slim
- 
-# Set the working directory in the container
-WORKDIR /app
- 
-# Copy project files into the container
-COPY . /app
- 
- 
-# Copy test files
-COPY test_main.py /app
+# Utilise une image Python officielle
+FROM python:3.10
 
-EXPOSE 5000
- 
-CMD ["sh", "-c", "docker run  -m unittest Unit_test.py "]
+# Définit le répertoire de travail
+WORKDIR /app
+
+# Copie tous les fichiers dans le conteneur
+COPY . .
+
+# Installe les dépendances
+RUN pip install -r requirements.txt || echo "Pas de requirements.txt"
+
+# Exécute le script Python
+CMD ["python", "main.py"]
