@@ -6,8 +6,8 @@ WORKDIR /app
 
 
 
-COPY . .
-
+COPY . /app
+COPY test_main.py /app
 
 EXPOSE 8000
 
