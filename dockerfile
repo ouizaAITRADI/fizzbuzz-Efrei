@@ -9,7 +9,7 @@ WORKDIR /app
 COPY . /app
 COPY test_main.py /app
 
-EXPOSE 8000
+EXPOSE 5000
 
 
 CMD ["python", "main.py"]
